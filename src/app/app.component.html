@@ -1,0 +1,59 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Walidator PESEL
+  </h1>
+</div>
+
+
+<div class="container" fxLayoutAlign="center">
+  <mat-card class="big-input" [ngClass]="{ 'has-focus': hasFocus }">
+    <form (ngSubmit)="onSubmit()" class="container">
+
+      <input matInput placeholder="Podaj numer PESEL" [(ngModel)]="inputNumber"
+              (focus)="hasFocus = true"
+              (blur)="hasFocus = false"
+              name="peselInput"
+              fxFlex="90%" />
+      <button mat-raised-button type='submit' fxFlex="10%">
+        <mat-icon>play_arrow</mat-icon>
+      </button>
+    </form>
+  </mat-card>
+</div>
+
+<div *ngIf="isInitiated" [@inOutAnimation]>
+    <h2 class="container isValidMessage" [ngClass]="{ 'valid': isValid }" fxLayoutAlign="center">
+        <mat-icon class="vertical-center" *ngIf="!isValid">cancel</mat-icon>
+        <span *ngIf="!isValid">PESEL nieprawidłowy</span>
+        <mat-icon class="vertical-center" *ngIf="isValid">cancel</mat-icon>
+        <span *ngIf="isValid">PESEL prawidłowy</span>
+
+    </h2>
+</div>
+
+<div *ngIf="isInitiated && isValid" [@inOutAnimation]>
+    <div>
+        <div class="container" fxLayoutAlign="center" fxLayout.xs="column" fxLayoutGap="20px">
+
+          <mat-card fxFlex="30%">
+            <mat-card-content fxfill fxLayoutAlign="center">
+              <mat-icon class="vertical-center" fxFlex="30">calendar_today</mat-icon>
+              <span fxFlex="60">{{day}}.{{month}}.{{year}}</span>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card fxFlex="30%">
+            <mat-card-content fxfill fxLayoutAlign="center">
+              <mat-icon class="vertical-center" fxFlex="30">wc</mat-icon>
+              <span *ngIf="isMale" fxFlex="60">Mężczyzna</span>
+              <span *ngIf="!isMale" fxFlex="60">Kobieta</span>
+            </mat-card-content>
+          </mat-card>
+
+        </div>
+    </div>
+</div>
+
+
+<router-outlet></router-outlet>

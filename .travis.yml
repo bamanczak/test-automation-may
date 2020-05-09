@@ -13,6 +13,7 @@ before_script:
 script:
 - ng lint
 - ng test --watch=false --browsers=ChromeHeadless
+- ng e2e
 - ng build --prod
 deploy:
   provider: pages

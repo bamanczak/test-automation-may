@@ -48,11 +48,11 @@ export class AppComponent {
   month;
   day;
   isMale;
-  isInitiated:boolean;
+  isInitiated: boolean;
   hasFocus: boolean;
 
 
-  onSubmit () {
+  onSubmit() {
     this.isInitiated = true;
     const pesel = this.inputNumber;
     this.isValid = this.isValidPesel(pesel);
@@ -62,7 +62,7 @@ export class AppComponent {
     }
   }
 
-  isValidPesel (pesel){
+  isValidPesel(pesel) {
     if (typeof pesel !== 'string') {
       return false;
     } else {
@@ -76,46 +76,46 @@ export class AppComponent {
     }
   }
 
-  verifyControlNumber (pesel:Array<number>){
-    let weight = [9, 7,3, 1, 9, 7, 3, 1, 9, 7];
+  verifyControlNumber(pesel: Array<number>) {
+    const weight = [9, 7, 3, 1, 9, 7, 3, 1, 9, 7];
     let sum = 0;
     const controlNumber = pesel[10];
     for (let i = 0; i < weight.length; i++) {
-      sum+=(pesel[i]*weight[i]);
+      sum += (pesel[i] * weight[i]);
     }
     sum = sum % 10;
     return sum === controlNumber;
   }
 
-  getDate (pesel: Array<number>) {
+  getDate(pesel: Array<number>) {
     this.year = this.getYear(pesel);
     this.month = this.getMonth(pesel);
     this.day = this.getDay(pesel);
   }
 
-  verifyDate (y: number, m: number, d: number) {
+  verifyDate(y: number, m: number, d: number) {
     const dt = new Date(y, m - 1, d);
-    return dt.getDate()===d &&
-          dt.getMonth()===m-1 &&
-          dt.getFullYear()===y;
+    return dt.getDate() === d &&
+          dt.getMonth() === m - 1 &&
+          dt.getFullYear() === y;
   }
 
-  getMonth (pesel:Array<number>) {
-    return (pesel[2]%2)*10+pesel[3];
+  getMonth(pesel: Array<number>) {
+    return (pesel[2] % 2) * 10 + pesel[3];
   }
 
-  getDay (pesel:Array<number>){
-    return pesel[4]*10+pesel[5];
+  getDay(pesel: Array<number>) {
+    return pesel[4] * 10 + pesel[5];
   }
 
-  getYear (pesel: Array<number>) {
+  getYear(pesel: Array<number>) {
     let year = 1900 + pesel[0] * 10 + pesel[1];
 
     if (pesel[2] >= 8) {
-      //Dates in the XIX century
-      year-=100;
+      // Dates in the XIX century
+      year -= 100;
     } else if (pesel[2] >= 2) {
-      //Dates in the XXI, XXII and XXIII  century
+      // Dates in the XXI, XXII and XXIII  century
       year += Math.floor(pesel[2] / 2) * 100;
     }
 

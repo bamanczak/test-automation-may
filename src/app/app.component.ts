@@ -68,7 +68,7 @@ export class AppComponent {
     } else {
       const peselArray = new Array();
       for (let i = 0; i < 11; i++) {
-        peselArray[i] = parseInt(pesel.substring(i, i + 1));
+        peselArray[i] = parseInt(pesel.substring(i, i + 1), 10);
       }
       this.peselArray = peselArray;
       return this.verifyControlNumber(peselArray) &&

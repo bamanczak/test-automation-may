@@ -1,4 +1,4 @@
-# Pesel
+# Repozytorium PESEL
 
 Projekt został wygenerowany przy użyciu [Angular CLI](https://github.com/angular/angular-cli).
 

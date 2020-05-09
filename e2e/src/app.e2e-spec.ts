@@ -10,8 +10,17 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual(' PESEL');
+    expect(page.getTitleText()).toEqual('Walidator PESEL');
   });
+
+
+  it('should reject invalid PESEL', () => {
+    page.navigateTo();
+    page.fillPeselInput('asdasd');
+    page.waitForAnimationToFinish();
+    expect(page.getErrorMessage()).toEqual('cancel PESEL nieprawidłowy');
+  });
+
 
   afterEach(async () => {
     // Anything?

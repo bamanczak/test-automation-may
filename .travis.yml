@@ -13,4 +13,5 @@ before_script:
 script:
 - ng lint
 - ng test --watch=false --browsers=ChromeHeadless
-- ng build --prod --base-href https://bamanczak.github.io/pesel/
+- ng e2e
+- ng build --prod

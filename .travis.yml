@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - "10"
+dist: trusty
+sudo: required
+addons:
+  chrome: stable
+branches:
+  only:
+  - master
+before_script:
+  - npm install -g @angular/cli
+script:
+- ng lint
+- ng test
+- ng build --prod --base-href https://bamanczak.github.io/pesel/

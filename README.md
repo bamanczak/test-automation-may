@@ -69,7 +69,7 @@ branches:
 before_script:
   - npm install -g @angular/cli
 script:
-- ng build --prod --base-href https://bamanczak.github.io/pesel/
+- ng build --prod
 ~~~
 - [ ] `git commit` oraz `git push` - sprawdź czy Travis uruchomił Build
 - [ ] rozszerz konfigurację CI o linter oraz testy jednostkowe, sprawdź czy wszystko działa na serwerze CI

@@ -18,7 +18,7 @@ describe('workspace-project App', () => {
     page.navigateTo();
     page.fillPeselInput('asdasd');
     page.waitForAnimationToFinish();
-    expect(page.getErrorMessage()).toEqual('cancel PESEL nieprawidłowy');
+    expect(page.getErrorMessage()).toContain('PESEL nieprawidłowy');
   });
 
 

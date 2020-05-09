@@ -10,6 +10,7 @@ branches:
   - master
 before_script:
   - npm install -g @angular/cli
+  - webdriver-manager update
 script:
 - ng lint
 - ng test --watch=false --browsers=ChromeHeadless
